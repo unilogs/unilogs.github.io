@@ -1,27 +1,29 @@
-// src/index.ts
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-// name this import depending on what routes correspond to productAPI or commentsAPI
+import path from "path";
 import apiRoutes from "./routes/routes";
 
-// Initialize dotenv to read and parse `.env` file contents into `process.env`.
 dotenv.config();
 
-// Instantiate an Express application and store it in the variable 'app'.
 const app: Express = express();
 const port = process.env.PORT || 5001;
 
-// Apply CORS middleware to the Express app to allow cross-origin requests.
+// Middleware
 app.use(cors());
+app.use(express.json());
 
+// Serve static files from the client directory
+app.use(express.static(path.join(__dirname, '../hyperspace-assets')));
+
+// API routes
 app.use("/api", apiRoutes);
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
+// All other GET requests will serve the Hyperspace index.html
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../hyperspace-assets/index.html'));
 });
 
-// Start the Express app and listen for incoming requests on the specified port
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });

@@ -1,6 +1,6 @@
 # TypeScript x Express x Node.js
 
-This is a boilerplate for the TypeScript + Express app.
+This is Unilogs web app
 
 ## Prerequisites
 
@@ -12,11 +12,7 @@ Before you begin, ensure you have the following installed on your machine:
 ## Installation
 
 ```
-git clone https://github.com/SrdjanCoric/ts-express-boilerplate
-```
-
-```
-cd ts-express-boilerplate/
+cd unilogs-backend
 ```
 
 Install the project dependencies including TypeScript and Nodemon:
