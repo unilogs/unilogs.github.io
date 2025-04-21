@@ -1,209 +1,1086 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Hyperspace by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Hyperspace by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Unilogs</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Sidebar -->
+    <section id="sidebar">
+      <div class="inner">
+        <nav>
+          <ul>
+            <li><a href="#intro">Unilogs</a></li>
+            <li>
+              <a href="#one" class="case-study-link">Case Study</a>
+              <ul class="submenu">
+                <li><a href="#two">Introduction</a></li>
+                <li><a href="#three">Observability</a></li>
+                <li><a href="#four">Existing Solutions</a></li>
+                <li><a href="#five">Unilogs Solution</a></li>
+                <li><a href="#six">Unilogs Architecture</a></li>
+                <li>
+                  <a href="#seven">Challenges</a>
+                </li>
+                <li><a href="#eight">Future Work</a></li>
+              </ul>
+            </li>
+            <li><a href="#nine">Our Team</a></li>
+            <li>
+              <a
+                href="https://www.npmjs.com/package/@unilogs/unilogs-shipper"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Try Unilogs ↗</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/unilogs/unilogs"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub ↗</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">Who we are</a></li>
-							<li><a href="#two">What we do</a></li>
-							<li><a href="#three">Get in touch</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector("#sidebar");
+        const caseStudyLink = document.querySelector(
+          "#sidebar .case-study-link"
+        );
+        const caseStudySubmenu = document.querySelector("#sidebar .submenu");
+        const caseStudySection = document.querySelector("#one");
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          );
+        }
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Hyperspace</h1>
-							<p>Just another fine responsive site template designed by <a href="http://html5up.net">HTML5 UP</a><br />
-							and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
+        // Toggle submenu when clicking Case Study link
+        caseStudyLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          caseStudySubmenu.classList.toggle("active");
+          caseStudyLink.classList.toggle("active");
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					</section>
+          // If we're opening the menu, scroll to the section
+          if (caseStudySubmenu.classList.contains("active")) {
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>What we do</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-							<div class="features">
-								<section>
-									<span class="icon solid major fa-code"></span>
-									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-lock"></span>
-									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-cog"></span>
-									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-desktop"></span>
-									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-link"></span>
-									<h3>Urna quis bibendum</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-gem"></span>
-									<h3>Aliquam urna dapibus</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-							</div>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
+        // Scroll event listener
+        window.addEventListener("scroll", function () {
+          // Show/hide submenu based on scroll position
+          if (isInViewport(caseStudySection)) {
+            caseStudySubmenu.classList.add("active");
+            caseStudyLink.classList.add("active");
+          } else {
+            caseStudySubmenu.classList.remove("active");
+            caseStudyLink.classList.remove("active");
+          }
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">user@untitled.tld</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(000) 000-0000</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
+          // Highlight current section in sidebar
+          document.querySelectorAll("section[id]").forEach((section) => {
+            if (isInViewport(section)) {
+              const id = section.getAttribute("id");
+              const link = document.querySelector(`#sidebar a[href="#${id}"]`);
 
-			</div>
+              if (link) {
+                // Remove active class from all links
+                document.querySelectorAll("#sidebar nav a").forEach((a) => {
+                  a.classList.remove("active");
+                });
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+                // Add active class to current link
+                link.classList.add("active");
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+                // If this is a submenu item, also highlight the parent
+                if (link.closest(".submenu")) {
+                  caseStudyLink.classList.add("active");
+                }
+              }
+            }
+          });
+        });
 
-	</body>
+        // Initialize - hide submenu if not in case study section
+        if (!isInViewport(caseStudySection)) {
+          caseStudySubmenu.classList.remove("active");
+          caseStudyLink.classList.remove("active");
+        }
+      });
+    </script>
+
+    <style>
+      /* Submenu styling - Add this to your existing CSS */
+      #sidebar .submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        margin-left: 1em; /* Adjusted to match template */
+        padding-left: 0; /* Remove default padding */
+      }
+
+      #sidebar .submenu.active {
+        max-height: 1000px;
+      }
+
+      #sidebar .submenu li {
+        margin: 0.5em 0 0 0; /* Adjusted spacing */
+      }
+
+      #sidebar .submenu a {
+        font-size: 0.6em;
+        padding: 0.5em 0;
+        border-bottom: none;
+        color: rgba(255, 255, 255, 0.35); /* Match template */
+      }
+
+      #sidebar .submenu a:hover {
+        color: rgba(255, 255, 255, 0.55); /* Match template */
+      }
+
+      #sidebar .submenu a.active {
+        color: #ffffff; /* Match template */
+      }
+
+      /* Case Study link styling */
+      #sidebar .case-study-link {
+        position: relative;
+        padding-right: 1.5em; /* Space for +/- indicator */
+      }
+
+      #sidebar .case-study-link:after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        top: 0; /* Changed from default (which aligns with baseline) */
+        transition: all 0.3s ease;
+        line-height: 0; /* Ensures proper vertical alignment */
+      }
+
+      #sidebar .case-study-link.active:after {
+        content: "-";
+      }
+
+      /* Ensure wrapper positioning isn't affected */
+      #wrapper {
+        margin-left: 18em; /* Match template */
+      }
+
+      @media screen and (max-width: 1280px) {
+        #wrapper {
+          margin-left: 0;
+          padding-top: 3.5em;
+        }
+      }
+    </style>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Intro -->
+      <section id="intro" class="wrapper style1 fullscreen fade-up">
+        <div class="inner">
+          <h1>Unilogs</h1>
+          <p>
+            Unilogs is an easy-to-deploy, reliable, and highly scalable log
+            observability platform for distributed applications.
+          </p>
+          <ul class="actions">
+            <li><a href="#one" class="button scrolly">Read Case Study</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- One -->
+      <section id="one" class="wrapper style2 spotlights">
+        <section>
+          <div class="content">
+            <div class="inner">
+              <h2>Case Study</h2>
+
+              <section id="two">
+                <h2>Unilogs Introduction</h2>
+                <p>
+                  Unilogs is an easy-to-deploy, reliable, and highly scalable
+                  log observability platform for distributed applications.
+                  Unilogs allows users to ship, transform, store, and visualize
+                  their distributed application's logs without complex
+                  configuration using a self-hosted infrastructure.
+                </p>
+                <p>
+                  In this case study, we'll start by explaining what an
+                  "observability platform" is and why one would need it for the
+                  logs generated by a distributed application. We will then
+                  compare existing solutions in order to reveal the underserved
+                  use case for which Unilogs was designed. Next, we'll go over
+                  the Unilogs architecture, discussing specific design decisions
+                  and their trade-offs as we go. After establishing this
+                  foundation, we'll discuss the challenges we faced in
+                  implementing our overarching design decisions, and finally,
+                  end with some comments about what future work we would want to
+                  do to expand Unilogs.
+                </p>
+              </section>
+
+              <section id="three">
+                <h2>Observability and Log Aggregation</h2>
+                <p>
+                  To explain what a "log observability platform" is, we first
+                  need to explain what "observability" means. Observability is
+                  the basic need to be able to "observe" the inner workings of a
+                  software system. This is especially important in the context
+                  of distributed applications, where the various functions of an
+                  application are spread across different devices, making it
+                  impossible to examine the inner workings of the entire app
+                  simply by looking at information generated by one component.
+                </p>
+                <p>
+                  For example, if a user is experiencing slow response times,
+                  one component might be causing the delay on its own, but maybe
+                  more than one component is slow, and the delay is only
+                  significant cumulatively. Or perhaps the app has a bug with
+                  complex behavior–there could be several different things going
+                  wrong together or in a cascade that ultimately cause the buggy
+                  behavior. These questions would be much more difficult to
+                  answer without looking at information at the level of the
+                  entire application.
+                </p>
+                <p>
+                  The information generated by the app is called "telemetry",
+                  and there are 3 main types: metrics, traces, and logs. Unilogs
+                  focuses on aggregating and analyzing logs. Logs are the most
+                  ubiquitous type of telemetry, because they are generated
+                  automatically. Almost every component of a software system
+                  generates a large quantity of logs, a stream of detailed
+                  information about every notable event occurring at each node
+                  of the system. This information-rich stream is under-utilized
+                  unless collected from each source, shipped to a common
+                  observability platform which can aggregate the logs from these
+                  disparate sources, store them, and then analyze the collected
+                  logs, e.g. with a graphical display of counts of the log
+                  "level" over time or by component (i.e. whether a log is a
+                  piece of info, a warning, or an error). The user could drill
+                  down to the details of any particular part of that graph, even
+                  down to the level of the individual logs. In this way, the
+                  user trying to understand a complex bug could quickly identify
+                  where a spike in errors or warnings occurred (or even an
+                  unusual spike in info logs), then view which components were
+                  generating unusual amounts of those logs, and then examine the
+                  details in order to piece together the whole story.
+                </p>
+                <p>
+                  The alternative is to simply open up every component's log
+                  file, skim them for information that seems important, and
+                  attempt to mentally piece together some coherent meaning based
+                  on this heuristic sampling. There are several obvious problems
+                  with this manual approach. Not only is it time consuming, this
+                  work is also quite prone to human error (something might be
+                  missed, or the source of a log might be misremembered). Even
+                  when done well, the data analyzed in this way is never
+                  collected and stored as a small part of an increasingly
+                  useful, central hub of information. Instead it is simply
+                  stored in the file system of each app component's machine, at
+                  least until such local storage becomes infeasible. As the
+                  scale and complexity of a distributed application increases,
+                  the need for a log observability platform grows alongside it.
+                </p>
+                <p>
+                  Of course, the challenge of setting up such a platform
+                  increases as well. Logs come in a variety of formats, which
+                  means that the log aggregation process has to involve parsing
+                  and transforming them into some common structure that can be
+                  analyzed in bulk. Additionally, the large quantity of logs
+                  means that any sizeable distributed software system could
+                  overwhelm a monolithic solution relying on a single machine to
+                  host the platform, meaning that the log observability platform
+                  itself needs to be distributed across several components which
+                  can be separately scaled according to the volume of the
+                  throughput. This increases the complexity of any sort of
+                  viable solution.
+                </p>
+                <p>
+                  At a minimum, a simple log aggregation pipeline has 4
+                  components:
+                </p>
+                <ol>
+                  <li>
+                    An "agent", AKA a "shipper", which collects the logs from a
+                    source and ships them to the next part of the pipeline. The
+                    shipper can also parse and transform the logs before sending
+                    them on, ensuring that they end up in a common format usable
+                    by the next component of the pipeline.
+                  </li>
+                  <li>
+                    An "ingester", which receives the logs and inserts them into
+                    the storage component.
+                  </li>
+                  <li>
+                    The log storage component, generally some sort of database,
+                    which keeps the increasingly massive stores of logs in
+                    long-term storage–at least as long-term as the platform
+                    administrators are willing to pay for and manage.
+                  </li>
+                  <li>
+                    Finally, to make use of this storage, the pipeline needs to
+                    end with a component that queries and displays aggregate
+                    data about the logs–preferably with the ability to quickly
+                    drill down to the details of any particular log source or
+                    time period (maintaining the depth of information contained
+                    within each log).
+                  </li>
+                </ol>
+                <p>
+                  On its own, this naive design doesn't seem too intimidating.
+                  Again, however, the complications start to arise as the scale
+                  of the task increases. As the complexity of a distributed app
+                  increases, there are more sources of logs (more app
+                  components) all needing to ship to the same observability
+                  platform. And as the scale of the app increases, the rate of
+                  log generation for each component increases as well.
+                </p>
+                <p>
+                  A single ingester could quickly become a throttle on the
+                  system, dropping logs and losing data as it is overwhelmed by
+                  the sheer volume. This points to horizontal scaling for that
+                  component, but that isn't as simple as it seems either, due to
+                  the fact that log volume is bursty and unpredictable. And the
+                  storage itself quickly becomes a complex task–where do you put
+                  logs if you're collecting TBs of log data every day without
+                  maxing out your storage capacity? Do you compress that data
+                  somehow, and if so how do you efficiently query it? And even
+                  after compressing the data, how do you manage the eventual
+                  overflow of log data?
+                </p>
+                <p>
+                  For these reasons and more, existing observability pipelines
+                  are generally more sophisticated and complex than the naive
+                  model depicted above.
+                </p>
+              </section>
+
+              <section id="four">
+                <h2>Existing Solutions</h2>
+                <p>
+                  Unilogs matches that complexity in order to address some of
+                  the same challenges that face anyone attempting to provide an
+                  observability solution for logs, but as we will see it also
+                  fills a particular niche within the landscape of existing
+                  solutions. To understand that niche, we need to examine that
+                  landscape in more detail.
+                </p>
+                <p>
+                  Existing observability platforms come in two main
+                  categories–managed services, and self-hosted DIY setups. The
+                  graphic below splits the managed solutions side into two
+                  varieties. First, there are the full package, end-to-end
+                  observability platforms, like DataDog or New Relic. Second,
+                  there are cloud-hosted, managed versions of otherwise
+                  open-source platforms, like Grafana Cloud or Elastic Cloud,
+                  each of which is built using open-source components; whether
+                  that's the Grafana Loki stack or the "ELK" stack
+                  (Elasticsearch, Logstash, and Kibana), you pay for the cloud
+                  storage and for outsourcing the platform's maintenance. These
+                  underlying stacks are also the two main options in the DIY,
+                  self-hosted category.
+                </p>
+                <div class="diagram">
+                  [Diagram comparing existing solutions would go here]
+                </div>
+                <p>
+                  As you can see, each type of solution comes with its own
+                  advantages and disadvantages. The managed solutions are
+                  simpler to use, of course, but they also cost more. You're
+                  paying for both the cost of the infrastructure and the cost of
+                  the service managing the platform. You also have to give up
+                  ownership of your data to use the service, which may not be a
+                  viable option if your app produces logs with sensitive or even
+                  legally protected data (like PHI in the healthcare industry).
+                </p>
+                <p>
+                  On the other hand, going the DIY route could entail weeks of
+                  overcoming configuration quirks and steep learning curves,
+                  depending on the experience and expertise of the software
+                  engineering team tasked with setting it up. The ELK stack is
+                  notoriously difficult, but even the Grafana Loki stack is
+                  complex–especially if you expand it to include additional
+                  components like a queue in front of the ingesters.
+                </p>
+                <p>
+                  Time spent upfront on a DIY stack is an investment, but it's
+                  also one which commits you to maintaining that complex system
+                  over time, both in terms of updating the infrastructure and in
+                  terms of scaling appropriately–unless the scaling has been
+                  handled in advance through the use of a container
+                  orchestration system like Kubernetes (which comes with its own
+                  steep learning curve).
+                </p>
+                <p>
+                  Engineering time is money–but it's also actually time, too.
+                  The need for an observability platform may become most obvious
+                  when there is an existing problem that you need insight into
+                  to solve–which, if that's why it's being set up, makes
+                  spending a lot of time devising and building a DIY system
+                  prohibitively slow. Even if an observability pipeline is being
+                  built alongside a distributed application, that still slows
+                  down the work on what you actually care about–the distributed
+                  application itself. And any new project is more likely to
+                  change shape in terms of its infrastructure than an
+                  established one–which means any change to the components that
+                  are producing logs will entail another adjustment to the
+                  observability pipeline, possibly even cascading changes and/or
+                  configuration bugs.
+                </p>
+                <p>
+                  This brings us to the use case for Unilogs–anyone in need of a
+                  highly scalable log observability platform which has both the
+                  convenience of a streamlined setup and the flexibility and
+                  cost of a self-hosted solution. As long as the focus is on
+                  logs, and other types of telemetry like metrics and traces can
+                  wait, Unilogs provides a ready-made solution without the
+                  downsides of a paid service.
+                </p>
+              </section>
+
+              <section id="five">
+                <h2>The Unilogs Solution</h2>
+                <p>
+                  When we expand the comparison chart above to include Unilogs,
+                  it's easy to see the comparative strengths of our solution.
+                </p>
+                <div class="diagram">
+                  [Updated diagram including Unilogs would go here]
+                </div>
+                <p>
+                  Unilogs shines in comparison because we combine some of the
+                  key strengths of each of the major categories of existing
+                  solutions–the ease of use of a managed service with the
+                  self-hosting and price point of a DIY solution. The main
+                  limitation of Unilogs is the lack of flexibility compared to a
+                  full DIY solution–Unilogs is an opinionated log observability
+                  platform, meaning that it comes pre-set with a particular
+                  infrastructure and a particular configuration. It cannot be
+                  easily modified to handle metrics or traces, it must be
+                  deployed to AWS, and it comes with a set of Kafka message
+                  brokers in front even though smaller systems wouldn't need
+                  that and may not want to unnecessarily pay to host that
+                  infrastructure. When deploying Unilogs the user is not given
+                  many options–it is a cohesive, prebuilt package.
+                </p>
+                <p>
+                  Unilogs may not be customizable, but it is a production-ready
+                  observability platform capable of automatically scaling to
+                  handle ingesting several TBs of logs per day, with the
+                  resilience necessary to handle large spikes in throughput, and
+                  the reliability to avoid losing any valid data through the
+                  stateful data persistence of the Kafka distributed streaming
+                  platform. Unilogs is easy to use, but it's not just a version
+                  of the naive log ingestion pipeline architecture described
+                  above–Unilogs is a powerful, production-ready system.
+                </p>
+                <p>
+                  That said, Unilogs would mainly be used because the engineers
+                  relying on it don't already have the pre-existing expertise
+                  needed to quickly deploy a DIY stack. The primary goal of our
+                  project was maximal simplicity for the user–but we were
+                  careful to ensure that this was at the cost of flexibility
+                  only, not at the cost of scalability or reliability.
+                </p>
+                <p>
+                  The whole platform deploys with a single command and the
+                  provision of a few credentials. Instead of days or weeks,
+                  setup can be measured in hours or even minutes. There are only
+                  2 prerequisites for deploying Unilogs–an AWS account with an
+                  IAM user with admin or otherwise sufficient permissions, and
+                  node/NPM installed on the local machine that will do the
+                  deployment. These aren't requirements that would be avoided by
+                  going the DIY route, assuming you were still deploying to AWS,
+                  so really in terms of unique steps Unilogs only has 4–as
+                  compared to 18 if you were to try to copy the Unilogs
+                  architecture (which is based on the Grafana/Loki stack) and
+                  build it yourself.
+                </p>
+                <div class="diagram">
+                  [Diagram comparing deployment steps would go here]
+                </div>
+                <p>
+                  That painful-looking list on the right is avoided because of
+                  Unilogs' highly opinionated setup process. This implies a high
+                  degree of convenience, but as mentioned above that is achieved
+                  at the cost of reduced flexibility. This manifests in a couple
+                  different ways.
+                </p>
+                <p>
+                  First, our solution deploys to AWS specifically. You cannot
+                  deploy Unilogs to another cloud computing provider, and you
+                  cannot deploy to your own machines on-site. Given that AWS is
+                  by far the most popular cloud infrastructure service, and the
+                  fact that self-hosting with on-site machines is unusual and in
+                  most cases comparatively undesirable, we felt that this was a
+                  reasonable price to pay for the convenience of a largely
+                  pre-configured system.
+                </p>
+                <p>
+                  Additionally, because Unilogs is a pre-packaged solution, it
+                  is also pre-built using specific components, and those
+                  components are configured to work together in a predetermined
+                  way. There is some limited flexibility, such as the option to
+                  use a different shipper than we provide, or the option to
+                  manually expand the configuration DIY-fashion to handle other
+                  types of telemetry beyond logs. But mostly, Unilogs does not
+                  have the flexibility of a fully DIY solution. As long as our
+                  setup used reliable, scalable architecture and reasonable
+                  default configurations, this seemed like a fair trade to make,
+                  since the users seeking a solution like Unilogs would likely
+                  not have the pre-existing expertise to have strong preferences
+                  on the choice of architecture and the configuration details.
+                </p>
+                <p>
+                  We do think we accomplished this, but to really understand the
+                  advantages of the Unilogs architecture and how it can reliably
+                  handle such high throughput, we'll need to take some time to
+                  follow the journey of a log through the entire pipeline, from
+                  the log shipper to the Grafana UI.
+                </p>
+              </section>
+
+              <section id="six">
+                <h2>Unilogs' Architecture</h2>
+                <p>
+                  First we should look at the entire Unilogs pipeline at a high
+                  level. The entrance of the pipeline is the Unilogs shipper,
+                  which ships from the client's host machines running parts of a
+                  distributed application. The main body of the pipeline is the
+                  Unilogs observability platform deployed on AWS, which ingests,
+                  processes, stores, and queries the log data. Then, out of the
+                  other end of the pipeline, a dashboard provisioned with the
+                  log data is emitted, sent to the Unilogs user's browser when
+                  they sign into the Grafana front end. This high level view can
+                  be seen in the diagram below.
+                </p>
+                <div class="diagram">
+                  [High-level architecture diagram would go here]
+                </div>
+                <p>
+                  For now, we will start from the beginning of the Unilogs
+                  pipeline, and zoom in on each piece as we encounter them in
+                  sequence.
+                </p>
+
+                <h3>The Unilogs Shipper - Vector</h3>
+                <p>
+                  When a log is generated by some app component it is typically
+                  output into a log file. From there, a log shipper (aka an
+                  "agent") is installed on the same machine so it can tail that
+                  log file and ship any new inputs somewhere. In Unilogs'
+                  architecture, that log shipper is Vector. Vector is a newer,
+                  highly performant shipper which is very lightweight (only
+                  requires a few MB of memory)–a choice we made to avoid putting
+                  too much burden on the client's host machines, since we don't
+                  know how much room they have to add something on top of the
+                  distributed app components running on those machines. Vector
+                  also has native TCP connectivity to Kafka, making it a good
+                  fit for our pipeline (i.e. we didn't have to use a reverse
+                  proxy to first adapt HTTP messages).
+                </p>
+                <p>
+                  Because this first step in the process occurs outside the
+                  deployed Unilogs platform, it was important to us to simplify
+                  the setup process for the shipper as well. For this reason, we
+                  built the Unilogs shipper configuration generator, a small
+                  node app that walks the user through the process of
+                  configuring and running a Dockerized container of Vector. The
+                  configuration generator runs on the command line, and simply
+                  asks for the user to point it to the path of the log file they
+                  want to ship, and to confirm the log format these logs are
+                  written in. If the log format is an unusual or custom format,
+                  Vector can still be DIY configured to parse those custom
+                  logs–but for the most common formats, the user can simply
+                  select it using our tool. The configuration generator can then
+                  install and run the Vector container, and begin shipping to
+                  the Unilogs observability platform.
+                </p>
+                <p>See it in action below:</p>
+                <div class="diagram">[VIDEO DEMO 1]</div>
+
+                <h3>The Unilogs Observability Platform</h3>
+                <p>
+                  The main part of the Unilogs log observability pipeline is the
+                  Unilogs platform deployed on AWS. This is the part of the
+                  pipeline that does all the work–ingesting and aggregating the
+                  logs, processing them for storage, and querying and displaying
+                  log data visualizations. You can see in the diagram below that
+                  this is accomplished by several components working together to
+                  make a complete system, each of which is capable of scaling
+                  independently of the others as needed.
+                </p>
+                <div class="diagram">
+                  [Platform architecture diagram would go here]
+                </div>
+                <p>
+                  As shown above, the entire Unilogs platform is contained
+                  within a single Kubernetes cluster, hosted on AWS EKS.
+                  Kubernetes is a container orchestration engine, and using it
+                  allows Unilogs to set up rules during deployment that
+                  determine how to automatically scale all parts of the
+                  infrastructure as needed to meet demand. At the level of the
+                  Kubernetes pods–networks of containerized functional
+                  components that make up Unilogs–this scaling is done both in
+                  terms of the number of replicas (horizontal scaling) and in
+                  terms of the compute power allotted to each replica (vertical
+                  scaling). Additionally, the Kubernetes cluster is configured
+                  to automatically scale its worker nodes, the underlying
+                  compute power from AWS that runs the Unilogs platform.
+                </p>
+                <p>
+                  As we take a look at each major piece of Unilogs in turn,
+                  we'll be able to see how using a complex container
+                  orchestration engine like Kubernetes enables the high
+                  scalability needed despite the ways that the tasks, capacity,
+                  and needs of each part of the platform differ.
+                </p>
+
+                <h4>
+                  The Unilogs Entry Point - Kafka (with Vector subscribers)
+                </h4>
+                <p>
+                  As you can see above, the first stop a log makes after being
+                  shipped to the Unilogs platform is Kafka, which serves the
+                  role of a queue in front of the rest of the log aggregation
+                  system. Placing a queue in front of a log aggregation system
+                  like Loki is a common way to resolve a common problem in log
+                  aggregation–high volume with bursts of even higher volume.
+                </p>
+                <p>
+                  As mentioned before, pretty much every component of a
+                  distributed application will be generating frequent logs, and
+                  they all have to go somewhere. Depending on the size and type
+                  of the application, the volume of logs to ingest in total can
+                  be quite high, and that volume is increasing over time. A
+                  smaller business may measure daily log ingestion in GBs, but
+                  many larger businesses have to measure their daily log
+                  ingestion in TBs. Our choice of log aggregation system, Loki,
+                  is deployed in a mode that can handle several TBs of log data
+                  per day, which would be enough for many businesses with a
+                  moderately high log ingestion requirement.
+                </p>
+                <p>
+                  However, logs are a bursty type of data. Logs are generated in
+                  response to events, so when an app is malfunctioning and
+                  throwing cascading errors, the output could multiply many
+                  times compared to the standard pace of log generation when the
+                  app is functioning normally. Unfortunately, this is also when
+                  logs become most useful, since you'd want to be able to look
+                  into the details of what went wrong. So, even though our
+                  deployment of Loki can handle a large volume of logs, it's
+                  still possible that a big burst of logs could overwhelm its
+                  log ingestion components. Thus, the need for some sort of
+                  queue.
+                </p>
+                <p>
+                  Like many others designing log observability platforms, we
+                  chose Kafka to function as our queue, although it is more than
+                  that. Kafka is typically described as a distributed streaming
+                  platform and message broker. It is a heavyweight component,
+                  often chosen for its high throughput (about 5TB/day per
+                  broker) and relatively low latency (although it's not as fast
+                  as some message brokers that can only handle smaller
+                  throughputs, like RabbitMQ).
+                </p>
+                <p>
+                  More than that, though, it is also a platform capable of
+                  storing and recovering large amounts of data, making use of
+                  data replication across brokers to ensure reliable delivery.
+                  Our Loki deployment may be able to scale automatically to
+                  handle large volumes, but large bursts of data could mean that
+                  a lot of logs get dropped due to rate limiting just when that
+                  data is needed the most.
+                </p>
+                <p>
+                  The Unilogs platform deploys with three Kafka brokers, each of
+                  which manages its own partition of the total log data and
+                  replicates that data across each other broker (for
+                  reliability). All in all, this means that Kafka enables
+                  Unilogs to sustain reliable data delivery even at peak loads.
+                </p>
+                <p>
+                  On the other end of the Kafka queue, we again employ
+                  Vector–this time as a log "aggregator" rather than as an
+                  "agent", i.e. it processes and forwards the logs taken from
+                  potentially multiple Kafka brokers, rather than collecting
+                  them from the machine it's on. Vector workers are set to pull
+                  messages from any available Kafka broker and then process and
+                  forward them to Loki in the format it expects.
+                </p>
+
+                <h4>
+                  Unilogs Aggregation and Storage - Loki (with S3 buckets)
+                </h4>
+                <p>
+                  When Loki receives a log from a Vector worker, it does more
+                  than simply store it. Loki is actually a complex log
+                  aggregation system, with eight different components which can
+                  be split out entirely and managed as a web of microservices
+                  (for maximal scaling at the cost of significant maintenance),
+                  or even just lumped together into a single monolithic app (for
+                  a simple setup that can only handle up to about 20GB of logs
+                  per day). In the middle, we have "simple scalable" mode, which
+                  logically groups these components by function into three main
+                  "targets" that translate into separately scaling groups of
+                  Kubernetes pods–read, write, and backend.
+                </p>
+                <div class="diagram">
+                  [Loki architecture diagram would go here]
+                </div>
+                <p>
+                  Unilogs deploys Loki in "simple scalable" mode, to optimize
+                  between scalability and simplicity. This still entails a
+                  significantly more complicated setup than the monolithic
+                  version, but we abstract that away from the user in order to
+                  yield the benefit of this deployment mode without its main
+                  downside.
+                </p>
+                <p>
+                  Part of the difference between the simple monolithic setup and
+                  what we used is that instead of simply storing the aggregate
+                  logs in its host machine's file system, we need a common
+                  storage location that can be accessed by all of the read,
+                  write, and backend targets, and also be able to handle the
+                  massive scale of storage necessary even just to hold onto the
+                  logs for a day at a time.
+                </p>
+                <p>
+                  For that, Unilogs configures Loki to use two AWS S3 buckets
+                  (an object storage service), one for the logs themselves and
+                  another to store indices that speed up querying.
+                </p>
+                <p>
+                  Loki's components work together with the S3 buckets to store,
+                  index, compress, manage, and query logs, ultimately
+                  provisioning this data to the final Unilogs component,
+                  Grafana.
+                </p>
+
+                <h4>Unilogs Querying and Data Visualization - Grafana</h4>
+                <p>
+                  As just mentioned, Loki includes a component (in its read
+                  targets) that queries the aggregated log data, but only when
+                  instructed to do so. The request for that data first
+                  originates from the data visualization component, which is
+                  responsible for handling requests from the user to display the
+                  retrieved log data in various ways. In the Unilogs
+                  architecture, this role is served by Grafana.
+                </p>
+                <p>
+                  The Unilogs platform deployment automatically generates an
+                  external IP which the user can use to access Grafana's UI.
+                  Once signed in with the user's chosen credentials, they'll see
+                  that Unilogs has pre-configured Grafana with a dashboard and
+                  provisioned it with the log data from Loki. Grafana is
+                  customizable, so users can modify dashboards as desired, along
+                  with generating custom graphical reports about the data based
+                  on common fields or custom tags.
+                </p>
+                <p>See it in action below:</p>
+                <div class="diagram">[VIDEO DEMO 2]</div>
+                <p>
+                  The end result of the entire journey through the Unilogs
+                  pipeline, from the log file on the client's host machine to
+                  the data visualization that comes out the other end, is the
+                  ability to meaningfully examine aggregate log data as well as
+                  drill down to any specific source or log of interest to see
+                  the preserved details–log observability.
+                </p>
+              </section>
+
+              <section id="seven">
+                <h2>Design Strategy and Technical Challenges</h2>
+                <p>
+                  Now that we have a better understanding of how Unilogs
+                  functions to provide log observability, we can zoom out again
+                  and more thoroughly examine the overarching approach to
+                  Unilogs' design.
+                </p>
+                <p>
+                  A repeated theme throughout this document is the
+                  prioritization we placed on a simple user experience when
+                  using Unilogs, and the efforts we took to provide that while
+                  minimizing the trade-offs this decision entailed. The main
+                  method by which this was achieved was building Unilogs as a
+                  highly opinionated platform–almost all configuration is
+                  preset, minimizing the headache of deployment but also the
+                  user's control over the details of that deployment.
+                </p>
+                <p>
+                  Unilogs does not prevent power users from making some of their
+                  own decisions and modifying Unilogs through some DIY work, but
+                  there are degrees of feasibility for these changes. Some of
+                  the opinions wrapped up in the Unilogs package can be adjusted
+                  after deployment using the AWS console and/or command line
+                  tools, for example by changing the scaling min/max of the
+                  platform's underlying cloud compute or adding an AWS IAM role
+                  that other users can assume to get internal cluster access.
+                  But doing so is a DIY process not directly supported by
+                  Unilogs.
+                </p>
+                <p>
+                  More difficult than post-hoc adjustments to deployment are
+                  some changes that would have to be made beforehand, such as by
+                  digging into our code and altering the configuration details
+                  for each component (Kafka, Vector, Loki, Grafana). An even
+                  more difficult change would be to try to deploy Unilogs to a
+                  cloud provider other than AWS. The user would essentially have
+                  to start a separate DIY project, and build it by referencing
+                  ours.
+                </p>
+                <p>
+                  That said, we were less concerned about these more difficult
+                  adjustments, because our use case is users who are not already
+                  comfortable with digging into the more complex configuration
+                  details, and who would benefit from those details being
+                  abstracted away by the Unilogs deployment package.
+                </p>
+                <p>
+                  This approach, however, entailed one major challenge for us–in
+                  order for Unilogs users to do things the easy way, we as
+                  developers had to do things the hard way.
+                </p>
+
+                <h3>The Challenge of Writing Unilogs Infrastructure as Code</h3>
+                <p>
+                  Before we began this project, none of us had any experience
+                  managing a Kubernetes cluster, configuring Helm charts
+                  (configuration packages for installing something onto a
+                  cluster), or deploying anything more than an S3 bucket on AWS.
+                  Even more importantly, none of us had any experience working
+                  with the AWS Cloud Development Kit (CDK).
+                </p>
+                <p>
+                  The AWS CDK is presented as a way to write "infrastructure as
+                  code"--your code should specify what pieces of infrastructure
+                  will be deployed, how they are configured to work individually
+                  and interrelatedly, what permissions and resources they each
+                  have, etc., and then you can run a couple commands in the
+                  terminal to execute that deployment based on the code in your
+                  files (we used TypeScript).
+                </p>
+                <p>
+                  This is easier said than done. The AWS CDK documentation is
+                  spotty, sometimes inaccurate, and out of date. Whenever there
+                  was a "how-to" guide we found on AWS, it would generally give
+                  instructions based on using the AWS console and/or using AWS
+                  command line tools like eksctl and the AWS CLI (combined with
+                  other command line tools specific to Kubernetes, like helm and
+                  kubectl), and then say nothing about how to accomplish these
+                  various critical tasks using the CDK instead. Multiple times
+                  we would become excited about some recent feature, research
+                  it, try to implement it, and ultimately realize it was just
+                  not possible using the CDK. One prime example of this is "EKS
+                  Auto Mode", which promises to abstract away the complexity of
+                  managing an EKS cluster's security configuration, permissions,
+                  storage, and scaling details. This would have simplified much
+                  of our work, but the latest stable version of the CDK just
+                  didn't have any functionality relating to that feature.
+                  (Perhaps a future version of Unilogs could make use of it with
+                  the next version of the CDK.)
+                </p>
+                <p>
+                  Or sometimes, even worse, the feature could be partially
+                  incorporated into the CDK, but in a way that subtly conflicts
+                  with other CDK functionality and breaks your code. This was
+                  the case with the recent "Pod Identity" method of granting
+                  permissions to cluster addons, which is meant to streamline
+                  the old process. But because attempting to use the new
+                  authorization process created duplicate service accounts,
+                  breaking the whole deployment, we ended up having to solve
+                  this task the old-fashioned way after all (which, of course,
+                  is more complicated).
+                </p>
+                <p>
+                  As the project progressed, it became more and more clear that
+                  the AWS CDK was not well supported, and that we were doing
+                  things the hard way. Each of the command line tools we cut out
+                  of our process were created for a reason–each can reduce the
+                  number of steps it takes to do something, or even accomplish
+                  things the CDK simply can't. These tools abstract requirements
+                  away from the user, often performing tasks prerequisite to the
+                  stated command without the user even learning that there were
+                  any. And, of course, the use of these tools was better
+                  documented, with step by step guides available for reference
+                  for each critical task we researched.
+                </p>
+                <p>
+                  So why did we choose to suffer through relying on the CDK? The
+                  goal was to rely exclusively on the CDK in order to remove
+                  prerequisites from the process of deploying Unilogs (recall
+                  the diagram earlier comparing Unilogs' deployment steps with
+                  those of a DIY process). With Unilogs, the user doesn't need
+                  to install Helm, kubectl, eksctl, or the AWS CLI, and they
+                  therefore also don't need to execute any extra command line
+                  commands using those tools or copy and paste a bunch of
+                  configuration details. All these steps would be eliminated as
+                  long as we could complete the process entirely using the CDK,
+                  and then wrap that code in a node package–which is what we
+                  ultimately managed to do.
+                </p>
+                <p>
+                  The AWS CDK is not a user-friendly node package. But, in the
+                  end, it is what allowed us to make our node package
+                  user-friendly!
+                </p>
+              </section>
+
+              <section id="eight">
+                <h2>Reflections and Future Work</h2>
+                <p>
+                  In keeping with the simplicity-first principle discussed
+                  above, for future work to improve Unilogs we would like to add
+                  features to support more options for users, as long as they
+                  don't result in shifting more of the configuration burden to
+                  users. This would cut down on the trade-off of a less flexible
+                  deployment, the main cost paid by prioritizing simplicity.
+                </p>
+                <p>
+                  For example, the Unilogs platform could be expanded to process
+                  metrics and traces, two other key pieces of telemetry that
+                  would build up Unilogs into a more complete and well-rounded
+                  observability platform. As mentioned when discussing our
+                  architecture, we chose Vector as a shipper and Kafka consumer
+                  in part because it is capable of transmitting metrics and
+                  traces in addition to logs. It would take significantly more
+                  setup, and involve instrumenting the user's applications on
+                  their host machines, but it could be done without completely
+                  replacing our chosen tools. For our use case, with users who
+                  are not prepared to make such big DIY additions to Unilogs, it
+                  would be unreasonable to expect them to expand this
+                  functionality without assistance. However, a future version of
+                  Unilogs could come with support for metrics and traces out of
+                  the box, and wouldn't have to require much more from the user
+                  to accomplish this.
+                </p>
+                <p>
+                  There are also smaller pieces of functionality that would have
+                  been valuable to add, if we had more time to add additional
+                  features. As mentioned in the design decisions section above,
+                  users could alter the way permissions are granted to enable
+                  more users to access the Unilogs cluster through an IAM role,
+                  but this is not currently something we provide support for.
+                  However, nothing would prevent us from providing options in
+                  the initial deployment process that would allow users to set
+                  this up right from the start, either in addition to or instead
+                  of granting admin access to the deploying user–perhaps even
+                  choosing from among common IAM role conditions to limit
+                  access. But even this smaller feature is fairly complicated,
+                  and we ran out of time. Still, as it stands, users are still
+                  able to make these changes if desired, and it wouldn't take
+                  nearly as much work as adding support for additional types of
+                  telemetry.
+                </p>
+                <p>
+                  One more ambitious expansion we thought about was enabling
+                  multi-cloud support using Terraform–a cloud-agnostic
+                  provisioning tool which would allow us to write deployment
+                  scripts for multiple cloud destinations. Instead of limiting
+                  our users to AWS, we could allow them to select between AWS
+                  and any other cloud providers we've added support for (e.g.
+                  Azure). This was a lower priority for us, though, because AWS
+                  is by far the most popular cloud infrastructure provider, and
+                  the amount of work it would take to provide multiple
+                  deployment scripts was prohibitive given our 4 week timeframe.
+                </p>
+              </section>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Two -->
+      <section id="nine" class="wrapper style1 fade-up">
+        <div class="inner">
+          <h2>Our Team</h2>
+          <p>
+            Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam
+            turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus,
+            lacus eget hendrerit bibendum, urna est aliquam sem, sit amet
+            imperdiet est velit quis lorem.
+          </p>
+          <div class="features">
+            <section>
+              <span class="icon solid major fa-code"></span>
+              <h3>Alex Stout</h3>
+              <p>
+                Phasellus convallis elit id ullam corper amet et pulvinar. Duis
+                aliquam turpis mauris, sed ultricies erat dapibus.
+              </p>
+            </section>
+            <section>
+              <span class="icon solid major fa-lock"></span>
+              <h3>David Park</h3>
+              <p>
+                Phasellus convallis elit id ullam corper amet et pulvinar. Duis
+                aliquam turpis mauris, sed ultricies erat dapibus.
+              </p>
+            </section>
+            <section>
+              <span class="icon solid major fa-cog"></span>
+              <h3>John Tamer</h3>
+              <p>
+                Phasellus convallis elit id ullam corper amet et pulvinar. Duis
+                aliquam turpis mauris, sed ultricies erat dapibus.
+              </p>
+            </section>
+            <section>
+              <span class="icon solid major fa-desktop"></span>
+              <h3>Nathan Gross</h3>
+              <p>
+                Phasellus convallis elit id ullam corper amet et pulvinar. Duis
+                aliquam turpis mauris, sed ultricies erat dapibus.
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper style1-alt">
+      <div class="inner">
+        <ul class="menu">
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

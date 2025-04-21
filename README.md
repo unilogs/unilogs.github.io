@@ -11,10 +11,6 @@ Before you begin, ensure you have the following installed on your machine:
 
 ## Installation
 
-```
-cd unilogs-backend
-```
-
 Install the project dependencies including TypeScript and Nodemon:
 
 ```
