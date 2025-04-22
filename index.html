@@ -55,146 +55,6 @@
       </div>
     </section>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sidebar = document.querySelector("#sidebar");
-        const caseStudyLink = document.querySelector(
-          "#sidebar .case-study-link"
-        );
-        const caseStudySubmenu = document.querySelector("#sidebar .submenu");
-        const caseStudySection = document.querySelector("#one");
-
-        // Function to check if element is in viewport
-        function isInViewport(element) {
-          const rect = element.getBoundingClientRect();
-          return (
-            rect.top <= window.innerHeight / 2 &&
-            rect.bottom >= window.innerHeight / 2
-          );
-        }
-
-        // Toggle submenu when clicking Case Study link
-        caseStudyLink.addEventListener("click", function (e) {
-          e.preventDefault();
-          caseStudySubmenu.classList.toggle("active");
-          caseStudyLink.classList.toggle("active");
-
-          // If we're opening the menu, scroll to the section
-          if (caseStudySubmenu.classList.contains("active")) {
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        });
-
-        // Scroll event listener
-        window.addEventListener("scroll", function () {
-          // Show/hide submenu based on scroll position
-          if (isInViewport(caseStudySection)) {
-            caseStudySubmenu.classList.add("active");
-            caseStudyLink.classList.add("active");
-          } else {
-            caseStudySubmenu.classList.remove("active");
-            caseStudyLink.classList.remove("active");
-          }
-
-          // Highlight current section in sidebar
-          document.querySelectorAll("section[id]").forEach((section) => {
-            if (isInViewport(section)) {
-              const id = section.getAttribute("id");
-              const link = document.querySelector(`#sidebar a[href="#${id}"]`);
-
-              if (link) {
-                // Remove active class from all links
-                document.querySelectorAll("#sidebar nav a").forEach((a) => {
-                  a.classList.remove("active");
-                });
-
-                // Add active class to current link
-                link.classList.add("active");
-
-                // If this is a submenu item, also highlight the parent
-                if (link.closest(".submenu")) {
-                  caseStudyLink.classList.add("active");
-                }
-              }
-            }
-          });
-        });
-
-        // Initialize - hide submenu if not in case study section
-        if (!isInViewport(caseStudySection)) {
-          caseStudySubmenu.classList.remove("active");
-          caseStudyLink.classList.remove("active");
-        }
-      });
-    </script>
-
-    <style>
-      /* Submenu styling - Add this to your existing CSS */
-      #sidebar .submenu {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
-        margin-left: 1em; /* Adjusted to match template */
-        padding-left: 0; /* Remove default padding */
-      }
-
-      #sidebar .submenu.active {
-        max-height: 1000px;
-      }
-
-      #sidebar .submenu li {
-        margin: 0.5em 0 0 0; /* Adjusted spacing */
-      }
-
-      #sidebar .submenu a {
-        font-size: 0.6em;
-        padding: 0.5em 0;
-        border-bottom: none;
-        color: rgba(255, 255, 255, 0.35); /* Match template */
-      }
-
-      #sidebar .submenu a:hover {
-        color: rgba(255, 255, 255, 0.55); /* Match template */
-      }
-
-      #sidebar .submenu a.active {
-        color: #ffffff; /* Match template */
-      }
-
-      /* Case Study link styling */
-      #sidebar .case-study-link {
-        position: relative;
-        padding-right: 1.5em; /* Space for +/- indicator */
-      }
-
-      #sidebar .case-study-link:after {
-        content: "+";
-        position: absolute;
-        right: 0;
-        top: 0; /* Changed from default (which aligns with baseline) */
-        transition: all 0.3s ease;
-        line-height: 0; /* Ensures proper vertical alignment */
-      }
-
-      #sidebar .case-study-link.active:after {
-        content: "-";
-      }
-
-      /* Ensure wrapper positioning isn't affected */
-      #wrapper {
-        margin-left: 18em; /* Match template */
-      }
-
-      @media screen and (max-width: 1280px) {
-        #wrapper {
-          margin-left: 0;
-          padding-top: 3.5em;
-        }
-      }
-    </style>
-
     <!-- Wrapper -->
     <div id="wrapper">
       <!-- Intro -->
@@ -411,10 +271,8 @@
                     max-width: 110%;
                     height: auto;
                     display: block;
-                    margin: 1em 0 1em -10%;
+                    margin: 1em auto;
                     background-color: white;
-                    position: relative;
-                    left: -5%;
                   "
                 />
                 <p>
@@ -1119,7 +977,179 @@
       </div>
     </footer>
 
+    <style>
+      /* Submenu styling - Add this to your existing CSS */
+      #sidebar .submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        margin-left: 1em; /* Adjusted to match template */
+        padding-left: 0; /* Remove default padding */
+      }
+
+      #sidebar .submenu.active {
+        max-height: 1000px;
+      }
+
+      #sidebar .submenu li {
+        margin: 0.5em 0 0 0; /* Adjusted spacing */
+      }
+
+      #sidebar .submenu a {
+        font-size: 0.6em;
+        padding: 0.5em 0;
+        border-bottom: none;
+        color: rgba(255, 255, 255, 0.35); /* Match template */
+      }
+
+      #sidebar .submenu a:hover {
+        color: rgba(255, 255, 255, 0.55); /* Match template */
+      }
+
+      #sidebar .submenu a.active {
+        color: #ffffff; /* Match template */
+      }
+
+      /* Case Study link styling */
+      #sidebar .case-study-link {
+        position: relative;
+        padding-right: 1.5em; /* Space for +/- indicator */
+      }
+
+      #sidebar .case-study-link:after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        top: 0; /* Changed from default (which aligns with baseline) */
+        transition: all 0.3s ease;
+        line-height: 0; /* Ensures proper vertical alignment */
+      }
+
+      #sidebar .case-study-link.active:after {
+        content: "-";
+      }
+
+      /* Ensure wrapper positioning isn't affected */
+      #wrapper {
+        margin-left: 18em; /* Match template */
+      }
+
+      @media screen and (max-width: 1280px) {
+        #wrapper {
+          margin-left: 0;
+          padding-top: 3.5em;
+        }
+      }
+
+      /* Center all text content */
+      #wrapper .inner,
+      #wrapper .content,
+      #wrapper .inner p,
+      #wrapper .inner h1,
+      #wrapper .inner h2,
+      #wrapper .inner h3,
+      #wrapper .inner h4,
+      #wrapper .inner ul,
+      #wrapper .inner ol,
+      #wrapper .inner li {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Center the team sections */
+      .features {
+        justify-content: center;
+      }
+
+      /* Center images while keeping their original size */
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Center buttons */
+      .actions {
+        justify-content: center;
+      }
+    </style>
+
     <!-- Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector("#sidebar");
+        const caseStudyLink = document.querySelector(
+          "#sidebar .case-study-link"
+        );
+        const caseStudySubmenu = document.querySelector("#sidebar .submenu");
+        const caseStudySection = document.querySelector("#one");
+
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          );
+        }
+
+        // Toggle submenu when clicking Case Study link
+        caseStudyLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          caseStudySubmenu.classList.toggle("active");
+          caseStudyLink.classList.toggle("active");
+
+          // If we're opening the menu, scroll to the section
+          if (caseStudySubmenu.classList.contains("active")) {
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+
+        // Scroll event listener
+        window.addEventListener("scroll", function () {
+          // Show/hide submenu based on scroll position
+          if (isInViewport(caseStudySection)) {
+            caseStudySubmenu.classList.add("active");
+            caseStudyLink.classList.add("active");
+          } else {
+            caseStudySubmenu.classList.remove("active");
+            caseStudyLink.classList.remove("active");
+          }
+
+          // Highlight current section in sidebar
+          document.querySelectorAll("section[id]").forEach((section) => {
+            if (isInViewport(section)) {
+              const id = section.getAttribute("id");
+              const link = document.querySelector(`#sidebar a[href="#${id}"]`);
+
+              if (link) {
+                // Remove active class from all links
+                document.querySelectorAll("#sidebar nav a").forEach((a) => {
+                  a.classList.remove("active");
+                });
+
+                // Add active class to current link
+                link.classList.add("active");
+
+                // If this is a submenu item, also highlight the parent
+                if (link.closest(".submenu")) {
+                  caseStudyLink.classList.add("active");
+                }
+              }
+            }
+          });
+        });
+
+        // Initialize - hide submenu if not in case study section
+        if (!isInViewport(caseStudySection)) {
+          caseStudySubmenu.classList.remove("active");
+          caseStudyLink.classList.remove("active");
+        }
+      });
+    </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
