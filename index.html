@@ -977,6 +977,71 @@
       </div>
     </footer>
 
+    <style>
+      /* Submenu styling - Add this to your existing CSS */
+      #sidebar .submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        margin-left: 1em; /* Adjusted to match template */
+        padding-left: 0; /* Remove default padding */
+      }
+
+      #sidebar .submenu.active {
+        max-height: 1000px;
+      }
+
+      #sidebar .submenu li {
+        margin: 0.5em 0 0 0; /* Adjusted spacing */
+      }
+
+      #sidebar .submenu a {
+        font-size: 0.6em;
+        padding: 0.5em 0;
+        border-bottom: none;
+        color: rgba(255, 255, 255, 0.35); /* Match template */
+      }
+
+      #sidebar .submenu a:hover {
+        color: rgba(255, 255, 255, 0.55); /* Match template */
+      }
+
+      #sidebar .submenu a.active {
+        color: #ffffff; /* Match template */
+      }
+
+      /* Case Study link styling */
+      #sidebar .case-study-link {
+        position: relative;
+        padding-right: 1.5em; /* Space for +/- indicator */
+      }
+
+      #sidebar .case-study-link:after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        top: 0; /* Changed from default (which aligns with baseline) */
+        transition: all 0.3s ease;
+        line-height: 0; /* Ensures proper vertical alignment */
+      }
+
+      #sidebar .case-study-link.active:after {
+        content: "-";
+      }
+
+      /* Ensure wrapper positioning isn't affected */
+      #wrapper {
+        margin-left: 18em; /* Match template */
+      }
+
+      @media screen and (max-width: 1280px) {
+        #wrapper {
+          margin-left: 0;
+          padding-top: 3.5em;
+        }
+      }
+    </style>
+
     <!-- Scripts -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
