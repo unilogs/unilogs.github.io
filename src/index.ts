@@ -14,14 +14,14 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from the client directory
-app.use(express.static(path.join(__dirname, '../hyperspace-assets')));
+app.use(express.static(path.join(__dirname, '../')));
 
 // API routes
 app.use("/api", apiRoutes);
 
 // All other GET requests will serve the Hyperspace index.html
 app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '../hyperspace-assets/index.html'));
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.listen(port, () => {

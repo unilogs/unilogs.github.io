@@ -1052,6 +1052,12 @@
       }
 
       @media screen and (max-width: 1280px) {
+        /* Hide the submenu completely in mobile view */
+        #sidebar .submenu {
+          display: none !important;
+        }
+
+        /* Adjust main menu items for mobile */
         #sidebar > .inner {
           display: flex;
           flex-direction: column;
@@ -1062,32 +1068,27 @@
 
         #sidebar nav ul {
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5em; /* Adjust this value for spacing between items */
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1em;
           padding: 0;
+          margin: 0;
         }
 
-        #sidebar nav ul li {
+        #sidebar nav ul > li {
           margin: 0;
-          padding: 0.5em 0;
-          width: 100%;
-          text-align: center;
+          padding: 0;
+          width: auto;
         }
 
         #sidebar nav a {
           padding: 0.5em 1em;
-          display: inline-block;
+          white-space: nowrap;
         }
 
-        /* Adjust submenu styling for mobile */
-        #sidebar .submenu {
-          margin-left: 0;
-          text-align: center;
-        }
-
-        #sidebar .submenu li {
-          margin: 0.25em 0;
+        /* Remove the +/- indicator in mobile view */
+        #sidebar .case-study-link:after {
+          display: none;
         }
       }
     </style>
@@ -1102,38 +1103,40 @@
         const caseStudySubmenu = document.querySelector("#sidebar .submenu");
         const caseStudySection = document.querySelector("#one");
 
-        // Function to check if element is in viewport
-        function isInViewport(element) {
-          const rect = element.getBoundingClientRect();
-          return (
-            rect.top <= window.innerHeight / 2 &&
-            rect.bottom >= window.innerHeight / 2
-          );
+        function isMobileView() {
+          return window.innerWidth <= 1280; // Match your media query breakpoint
         }
 
-        // Toggle submenu when clicking Case Study link
-        caseStudyLink.addEventListener("click", function (e) {
-          e.preventDefault();
-          caseStudySubmenu.classList.toggle("active");
-          caseStudyLink.classList.toggle("active");
+        // Toggle submenu when clicking Case Study link (only in desktop view)
+        if (caseStudyLink) {
+          caseStudyLink.addEventListener("click", function (e) {
+            if (!isMobileView()) {
+              e.preventDefault();
+              caseStudySubmenu.classList.toggle("active");
+              caseStudyLink.classList.toggle("active");
 
-          // If we're opening the menu, scroll to the section
-          if (caseStudySubmenu.classList.contains("active")) {
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        });
+              if (caseStudySubmenu.classList.contains("active")) {
+                document
+                  .querySelector(this.getAttribute("href"))
+                  .scrollIntoView({
+                    behavior: "smooth",
+                  });
+              }
+            }
+          });
+        }
 
         // Scroll event listener
         window.addEventListener("scroll", function () {
-          // Show/hide submenu based on scroll position
-          if (isInViewport(caseStudySection)) {
-            caseStudySubmenu.classList.add("active");
-            caseStudyLink.classList.add("active");
-          } else {
-            caseStudySubmenu.classList.remove("active");
-            caseStudyLink.classList.remove("active");
+          if (!isMobileView()) {
+            // Show/hide submenu based on scroll position (desktop only)
+            if (isInViewport(caseStudySection)) {
+              caseStudySubmenu?.classList.add("active");
+              caseStudyLink?.classList.add("active");
+            } else {
+              caseStudySubmenu?.classList.remove("active");
+              caseStudyLink?.classList.remove("active");
+            }
           }
 
           // Highlight current section in sidebar
@@ -1151,19 +1154,23 @@
                 // Add active class to current link
                 link.classList.add("active");
 
-                // If this is a submenu item, also highlight the parent
-                if (link.closest(".submenu")) {
-                  caseStudyLink.classList.add("active");
+                // If this is a submenu item and we're in desktop view, also highlight the parent
+                if (!isMobileView() && link.closest(".submenu")) {
+                  caseStudyLink?.classList.add("active");
                 }
               }
             }
           });
         });
 
-        // Initialize - hide submenu if not in case study section
-        if (!isInViewport(caseStudySection)) {
-          caseStudySubmenu.classList.remove("active");
-          caseStudyLink.classList.remove("active");
+        // Helper function to check if element is in viewport
+        function isInViewport(element) {
+          if (!element) return false;
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          );
         }
       });
     </script>
