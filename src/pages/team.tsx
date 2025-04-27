@@ -51,7 +51,7 @@ const Team = () => {
                   ? ""
                   : ""
               }
-              location=""
+              location="Istanbul, Turkey"
               github=""
               linkedin=""
               email=""

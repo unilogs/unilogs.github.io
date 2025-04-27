@@ -8,12 +8,19 @@ function HomepageHeader() {
   return (
     <section
       id="hero"
-      className="text-8xll flex h-lvh scroll-mt-60 flex-col items-center justify-center gap-8 bg-gradient-to-br from-left via-middle to-right to-90% p-6 text-2xl sm:flex-col"
+      className="text-8xll flex h-lvh scroll-mt-60 flex-col items-center justify-center gap-8 bg-gradient-to-br from-left to-right to-90% p-6 text-2xl sm:flex-col"
     >
       <article className="relative max-w-full px-4 py-8 pb-14 font-sans text-white antialiased md:py-10">
-        <h1 className="font-main mx-auto mb-2 max-w-4xl text-center text-4xl font-medium leading-[48px] tracking-tighter text-white md:text-5xl md:leading-tight">
-          An easy-to-deploy, reliable, and highly scalable log
-          observability platform for distributed applications.
+        <div className="mx-auto mb-6 w-full text-center">
+          <img
+            src="/img/Transparent Logo.png"
+            alt="Unilogs Logo"
+            className="mx-auto w-[80%] max-w-2xl" // Larger size with max-width
+          />
+        </div>
+        <h1 className="font-main mx-auto mb-2 max-w-4xl text-center text-3xl font-medium leading-[42px] tracking-tighter text-white md:text-4xl md:leading-tight">
+          An easy-to-deploy, reliable, and scalable log observability platform
+          for distributed applications.
         </h1>
         <p className="md:text mx-auto mt-1 max-w-6xl text-center text-xl leading-normal text-white md:mt-2 md:leading-10">
           It enables users to ship, transform, store, and visualize their logs

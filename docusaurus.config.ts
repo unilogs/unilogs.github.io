@@ -71,13 +71,13 @@ const config: Config = {
       },
       items: [
         { to: "/case-study", label: "Case Study", position: "right" },
-        {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "right",
-          label: "Docs",
-          to: "/docs/using-unilogs",
-        },
+        // {
+        //   type: "docSidebar",
+        //   sidebarId: "tutorialSidebar",
+        //   position: "right",
+        //   label: "Docs",
+        //   to: "/docs/using-unilogs",
+        // },
         {
           to: "/team",
           label: "Team",
@@ -111,10 +111,10 @@ const config: Config = {
               label: "Team",
               to: "/team",
             },
-            {
-              label: "Docs",
-              to: "/docs/using-unilogs",
-            },
+            // {
+            //   label: "Docs",
+            //   to: "/docs/using-unilogs",
+            // },
             {
               label: "Github",
               to: "https://github.com/unilogs/unilogs",
