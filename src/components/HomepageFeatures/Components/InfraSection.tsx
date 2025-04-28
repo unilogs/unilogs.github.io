@@ -35,8 +35,8 @@ const InfraSection = () => {
               </div>
               <img
                 className="w-14 rounded border-2"
-                src="/img/CloudDevelopmentKit.png"
-                alt="CDK Logo"
+                src="/img/kubernetes.png"
+                alt="Kubernetes"
               />
               <img className="w-14" src="/img/kafka.png" alt="Kafka Logo" />
               <img className="w-14" src="/img/vector.png" alt="Vector Logo" />

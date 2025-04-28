@@ -15,8 +15,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "Unilogs", // Usually your GitHub org/user name.
-  projectName: "https://unilogs.github.io", // Usually your repo name.
+  organizationName: "unilogs", // Usually your GitHub org/user name.
+  projectName: "unilogs.github.io", // Usually your repo name.
   trailingSlash: false,
   deploymentBranch: "gh-pages",
 

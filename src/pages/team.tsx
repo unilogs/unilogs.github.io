@@ -30,7 +30,6 @@ const Team = () => {
               location="Phoenix, AZ"
               github=""
               linkedin=""
-              email=""
             />
             <Member
               name="David Park"
@@ -42,7 +41,6 @@ const Team = () => {
               location="San Jose, CA"
               github="https://github.com/davidatlpark"
               linkedin="https://www.linkedin.com/in/davidatlpark/"
-              email="davidatlpark@gmail.com"
             />
             <Member
               name="John Tamer"
@@ -51,10 +49,9 @@ const Team = () => {
                   ? ""
                   : ""
               }
-              location="Istanbul, Turkey"
+              location="Waxhaw, NC"
               github=""
               linkedin=""
-              email=""
             />
             <Member
               name="Nathan Gross"
@@ -66,7 +63,6 @@ const Team = () => {
               location="Chicago, IL"
               github=""
               linkedin=""
-              email=""
             />
           </div>
         </article>

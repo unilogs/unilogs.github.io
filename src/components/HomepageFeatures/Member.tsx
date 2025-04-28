@@ -5,7 +5,6 @@ interface MemberProps {
   personalWebsite?: string;
   github: string;
   linkedin: string;
-  email: string;
 }
 
 function Member({
@@ -15,7 +14,6 @@ function Member({
   personalWebsite,
   github,
   linkedin,
-  email,
 }: MemberProps) {
   return (
     <div className="portrait-card flex flex-col">
@@ -98,27 +96,6 @@ function Member({
             <path d="M8 8l0 .01"></path>
             <path d="M12 16l0 -5"></path>
             <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
-          </svg>
-        </a>
-        <a
-          href={`mailto:${email}`}
-          className="text-willowGreen-600 hover:text-willowGreen-400 dark:text-willowGreen-300 dark:hover:text-willowGreen-100 inline-block"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-mail"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
-            <path d="M3 7l9 6l9 -6"></path>
           </svg>
         </a>
       </div>
