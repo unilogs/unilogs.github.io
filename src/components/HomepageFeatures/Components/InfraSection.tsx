@@ -18,7 +18,7 @@ const InfraSection = () => {
             <img
               src="/img/Diagram 6.png"
               alt="Unilogs architecture diagram"
-              className="my-10 rounded align-top shadow-[0_0_10px_grey] dark:shadow-none bg-white/80"
+              className="my-10 rounded align-top shadow-[0_0_10px_grey] dark:shadow-none bg-white/100"
             />
           </div>
           <div>

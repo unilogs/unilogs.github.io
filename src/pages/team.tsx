@@ -25,7 +25,7 @@ const Team = () => {
               image={
                 isKonamiCode
                   ? ""
-                  : ""
+                  : "team/Alex.jpeg"
               }
               location="Phoenix, AZ"
               github=""
@@ -36,7 +36,7 @@ const Team = () => {
               image={
                 isKonamiCode
                   ? ""
-                  : ""
+                  : "team/David.jpg"
               }
               location="San Jose, CA"
               github="https://github.com/davidatlpark"
@@ -58,7 +58,7 @@ const Team = () => {
               image={
                 isKonamiCode
                   ? ""
-                  : ""
+                  : "team/Nate.jpeg"
               }
               location="Chicago, IL"
               github=""
