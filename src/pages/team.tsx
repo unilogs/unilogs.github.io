@@ -47,9 +47,9 @@ const Team = () => {
               image={
                 isKonamiCode
                   ? ""
-                  : ""
+                  : "team/John.jpg"
               }
-              location="Waxhaw, NC"
+              location="Charlotte, NC"
               github=""
               linkedin=""
             />
