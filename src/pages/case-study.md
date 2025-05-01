@@ -16,8 +16,7 @@ Unilogs is an easy-to-deploy, reliable, and highly scalable log observability pl
 
 To understand what a log observability platform is, we first need to understand observability. Observability is, in brief, the ability to observe the inner workings of a software system. This is especially important in the context of a distributed application, where various functions are spread across different devices, making it difficult to get a holistic picture of its inner workings.
 
-For example, if a user experiences slow response times when ordering a pizza, there are several things that could be causing the delay.
-
+For example, if a user experiences slow response times when ordering a pizza, there are several things that could be causing the delay:
 - Network latency could be higher than normal
 - The validation of the order on the front-end application could be unusually slow
 - The backend server could be having difficulty connecting to the database
@@ -87,7 +86,6 @@ Unilogs combines key strengths of existing solutions: the ease of a managed serv
 That said, Unilogs would mainly be used because the engineers relying on it don’t already have the pre-existing expertise needed to quickly deploy a DIY stack. Our primary goal in building Unilogs was maximal simplicity for the user–but we were careful to ensure that this was at the cost of flexibility only, not at the cost of scalability or reliability.
 
 The whole platform deploys with a single command and the provision of a few credentials. Instead of days or weeks, setup can be measured in minutes. There are only three prerequisites for deploying Unilogs:
-
 1. Node.js/npm installed on the machine that will do the deployment (generally already the case for a software engineer’s machine)
 2. Docker (and Node.js/npm) on any machine that will be setting up a log shipper
 3. An AWS account with an IAM user with admin or otherwise sufficient permissions (which would need to be the case even going the DIY route, assuming you were still deploying to AWS)
@@ -216,8 +214,6 @@ There are also smaller pieces of functionality that would be valuable to add in 
 
 One more ambitious expansion we considered was enabling multi-cloud support using Terraform–a cloud-agnostic provisioning tool which would allow us to write deployment scripts for multiple cloud destinations. Instead of limiting our users to AWS, we could allow them to select between AWS and any other cloud providers we’ve added support for (e.g. Azure). This was a lower priority for us, though, because AWS is by far the most popular cloud infrastructure provider.
 
-¹https://devops.com/harnessing-the-value-of-log-data-analytics/
-
-²https://grafana.com/docs/loki/latest/get-started/deployment-modes/#simple-scalable
-
+¹https://devops.com/harnessing-the-value-of-log-data-analytics/  
+²https://grafana.com/docs/loki/latest/get-started/deployment-modes/#simple-scalable  
 ³https://www.confluent.io/blog/kafka-fastest-messaging-system/
