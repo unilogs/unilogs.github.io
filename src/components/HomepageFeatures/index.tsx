@@ -12,7 +12,6 @@ export default function HomepageFeatures(): JSX.Element {
       <FadeInSection fadeDistance={350}>
         <SDKSection />
       </FadeInSection>
-
       <FadeInSection fadeDistance={350}>
         <InfraSection />
       </FadeInSection>

@@ -88,11 +88,6 @@ const config: Config = {
           label: "GitHub",
           position: "right",
         },
-        {
-          href: "https://www.linkedin.com/company/unilogs",
-          label: "LinkedIn",
-          position: "right",
-        },
       ],
     },
     footer: {

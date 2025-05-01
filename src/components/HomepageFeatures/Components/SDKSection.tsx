@@ -10,7 +10,7 @@ const SDKSection = () => {
           </h1>
           <p className="mb-2 text-xl tracking-wide text-gray-600 dark:text-slate-100">
             Configure and deploy the Unilogs shipper with a simple interactive
-            CLI - no complex setup or configuration files required
+            CLI - no complex setup or configuration file editing required
           </p>
         </div>
         <div className="shadow-l my-10 max-w-full bg-transparent 4xl:w-[60%]">

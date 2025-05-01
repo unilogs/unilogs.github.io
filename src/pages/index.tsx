@@ -22,10 +22,6 @@ function HomepageHeader() {
           An easy-to-deploy, reliable, and scalable log observability platform
           for distributed applications.
         </h1>
-        <p className="md:text mx-auto mt-1 max-w-6xl text-center text-xl leading-normal text-white md:mt-2 md:leading-10">
-          It enables users to ship, transform, store, and visualize their logs
-          without complex configuration using a self-hosted infrastructure.
-        </p>
         <div className="mt-5 flex w-full flex-col-reverse items-center justify-center gap-2 p-6 md:flex-row">
           <Link
             className="rounded-xl border-2 border-solid px-5 pb-3 pt-3 text-white antialiased transition hover:scale-110 hover:text-white hover:no-underline sm:text-xl"

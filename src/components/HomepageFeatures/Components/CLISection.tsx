@@ -11,7 +11,7 @@ const CLISection = () => {
         </div>
         <div className="flex-grow text-left">
           <h1 className="mt-0 text-4xl font-medium leading-tight tracking-tight text-gray-600 dark:text-slate-100 md:text-[44px] md:leading-[52px]">
-            One Command to Full Observability
+            One Command to Observability
           </h1>
           <p className="mb-2 text-xl tracking-wide text-gray-600 dark:text-slate-100">
             Deploy a production-ready, TB-scale log platform on AWS with a

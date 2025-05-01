@@ -44,8 +44,9 @@ The challenge of setting up such a platform increases as well. Logs come in a va
 </figure>
 
 At a minimum, a log observability pipeline has 4 components:
+
 1. **An agent aka shipper** - Collects the logs and ships them to the ingestor. The shipper can also parse and transform the logs before sending them on, ensuring that they end up in a common format.
-2. **An ingester** -  Receives the logs and inserts them into the storage component.
+2. **An ingester** - Receives the logs and inserts them into the storage component.
 3. **Log storage component** - Some type of database which keeps the increasingly massive stores of logs in long-term storage.
 4. **Data visualization component** - Queries and displays aggregate data about the logs–preferably with the ability to quickly drill down to the details of any particular log source or time period.
 
@@ -68,7 +69,7 @@ Each type of solution comes with its own advantages and disadvantages. The manag
 
 On the other hand, going the DIY route can entail weeks of overcoming configuration quirks and steep learning curves. The ELK stack is notoriously difficult, but even the Grafana Loki stack is complex–especially if you expand it to include additional components like a queue in front of the ingesters.
 
-Time spent upfront on a DIY stack is an investment, but it’s also one which commits you to maintaining that complex system over time, both in terms of updating the infrastructure and  scaling appropriately. Even when scaling has been handled in advance through the use of a container orchestration system like Kubernetes, it comes with its own steep learning curve.
+Time spent upfront on a DIY stack is an investment, but it’s also one which commits you to maintaining that complex system over time, both in terms of updating the infrastructure and scaling appropriately. Even when scaling has been handled in advance through the use of a container orchestration system like Kubernetes, it comes with its own steep learning curve.
 
 Engineering time is money–but it’s also actually time, too. The need for an observability platform may become most obvious when there is already a problem for which insight is needed. But if an observability platform is being set up in response to a problem, spending a lot of time devising and building a DIY system would be prohibitively slow. Even if an observability pipeline is being built alongside a distributed application, that still slows down the work on what you actually care about–the application itself. A new pipeline is also more likely to change shape in terms of its infrastructure than an established one–which means any change to the log sources will entail another adjustment to the observability pipeline, possibly even cascading changes and/or configuration bugs.
 
@@ -215,18 +216,8 @@ There are also smaller pieces of functionality that would be valuable to add in 
 
 One more ambitious expansion we considered was enabling multi-cloud support using Terraform–a cloud-agnostic provisioning tool which would allow us to write deployment scripts for multiple cloud destinations. Instead of limiting our users to AWS, we could allow them to select between AWS and any other cloud providers we’ve added support for (e.g. Azure). This was a lower priority for us, though, because AWS is by far the most popular cloud infrastructure provider.
 
-## Conclusion
+¹https://devops.com/harnessing-the-value-of-log-data-analytics/
 
-Unilogs provides a unique middle ground between managed services and DIY solutions:
+²https://grafana.com/docs/loki/latest/get-started/deployment-modes/#simple-scalable
 
-- **Easy deployment**: Single-command setup with minimal prerequisites
-- **Production-ready**: Handles TBs of logs per day with automatic scaling
-- **Reliable**: Kafka-based architecture prevents data loss during bursts
-- **Self-hosted**: Maintain full control and ownership of your log data
-- **Cost-effective**: Pay only for the AWS infrastructure you use
-
-By making sophisticated log observability accessible to teams without specialized expertise, Unilogs fills an important gap in the observability landscape. Our opinionated approach abstracts away the complexity of configuration and deployment while maintaining the scalability and reliability needed for production workloads.
-
-The Unilogs architecture demonstrates how careful design choices can yield a system that is both powerful and easy to use. From the Vector shippers collecting logs at the edge, through the Kafka queue handling bursts, to Loki efficiently storing and querying log data, and finally Grafana providing rich visualizations–each component plays a crucial role in delivering a complete log observability solution.
-
-As we look to the future, we're excited about expanding Unilogs' capabilities while maintaining our core commitment to simplicity and reliability. Whether adding support for additional telemetry types, enhancing configuration options, or exploring multi-cloud deployments, our goal remains the same: to provide teams with the observability tools they need to understand and improve their distributed applications.
+³https://www.confluent.io/blog/kafka-fastest-messaging-system/
