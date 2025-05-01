@@ -70,14 +70,13 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
+        {
+          position: "right",
+          label: "Home",
+          to: "/",
+          activeBasePath: "never-active",
+        },
         { to: "/case-study", label: "Case Study", position: "right" },
-        // {
-        //   type: "docSidebar",
-        //   sidebarId: "tutorialSidebar",
-        //   position: "right",
-        //   label: "Docs",
-        //   to: "/docs/using-unilogs",
-        // },
         {
           to: "/team",
           label: "Team",
@@ -87,6 +86,11 @@ const config: Config = {
         {
           href: "https://github.com/unilogs/unilogs",
           label: "GitHub",
+          position: "right",
+        },
+        {
+          href: "https://www.linkedin.com/company/unilogs",
+          label: "LinkedIn",
           position: "right",
         },
       ],
@@ -111,10 +115,6 @@ const config: Config = {
               label: "Team",
               to: "/team",
             },
-            // {
-            //   label: "Docs",
-            //   to: "/docs/using-unilogs",
-            // },
             {
               label: "Github",
               to: "https://github.com/unilogs/unilogs",
@@ -122,7 +122,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: "Copyright © 2024 Unilogs",
+      copyright: "Copyright © 2025 Unilogs",
     },
     prism: {
       theme: prismThemes.github,

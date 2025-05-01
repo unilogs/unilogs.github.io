@@ -28,8 +28,8 @@ const Team = () => {
                   : "team/Alex.jpeg"
               }
               location="Phoenix, AZ"
-              github=""
-              linkedin=""
+              github="https://github.com/astout55555"
+              linkedin="https://www.linkedin.com/in/alex-55555-stout/"
             />
             <Member
               name="David Park"
@@ -50,8 +50,8 @@ const Team = () => {
                   : "team/John.jpg"
               }
               location="Charlotte, NC"
-              github=""
-              linkedin=""
+              github="https://github.com/TamerJohn"
+              linkedin="https://www.linkedin.com/in/john-tamer-00a173223/"
             />
             <Member
               name="Nathan Gross"
@@ -61,8 +61,8 @@ const Team = () => {
                   : "team/Nate.jpeg"
               }
               location="Chicago, IL"
-              github=""
-              linkedin=""
+              github="https://github.com/GrossNate"
+              linkedin="https://www.linkedin.com/in/nathangross/"
             />
           </div>
         </article>
